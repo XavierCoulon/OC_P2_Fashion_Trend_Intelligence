@@ -2,7 +2,6 @@ from PIL import Image
 import numpy as np
 import base64
 import io
-import os
 
 
 def validate_single_image(img_path: str, max_size: tuple = (1024, 1024)) -> bool:
@@ -110,28 +109,3 @@ def create_masks(
             combined_mask[mask_array > 0] = 0  # Class ID for Background is 0
 
     return combined_mask
-
-
-def get_content_type(file_path: str, allowed_extensions: tuple) -> str:
-    """
-    Get the appropriate Content-Type header for an image file.
-    Args:
-        file_path (str): Path to the image file
-        allowed_extensions (tuple): Tuple of allowed extensions
-    Returns:
-        str: Content-Type string for HTTP headers
-    """
-    ext = os.path.splitext(file_path)[1].lower()
-    mapping = {}
-    for allowed_ext in allowed_extensions:
-        if allowed_ext in [".jpg", ".jpeg"]:
-            mapping[allowed_ext] = "image/jpeg"
-        elif allowed_ext == ".png":
-            mapping[allowed_ext] = "image/png"
-        elif allowed_ext == ".bmp":
-            mapping[allowed_ext] = "image/bmp"
-        elif allowed_ext == ".webp":
-            mapping[allowed_ext] = "image/webp"
-        else:
-            mapping[allowed_ext] = f"image/{allowed_ext[1:]}"
-    return mapping.get(ext, "application/octet-stream")
