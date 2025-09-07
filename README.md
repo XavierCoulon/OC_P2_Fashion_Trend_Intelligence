@@ -36,13 +36,14 @@ Ce projet se concentre sur la **première fonctionnalité : la segmentation vest
 
 ```
 OC_P2_Fashion_Trend_Intelligence/
-├── src/
-│   └── oc_p2_fashion_trend_intelligence/
-│       └── __init__.py
-├── tests/
-│   └── __init__.py
-├── assets/                         ✅ (images de test, datasets)
-├── results/                        ✅ (segmentation outputs)
+├── notebooks/
+│   └── huggingface_api_cloth_seg.ipynb  # Notebook principal pour tester la segmentation vestimentaire
+├── scripts/
+│   └── test_hf_connection.py        # Script pour tester la connexion à l'API Hugging Face
+├── utils/
+│   └── connection_utils.py        # Utilitaires pour la connexion à l'API Hugging Face
+│   └── image_utils.py              # Utilitaires pour le traitement d'images et masques
+├── assets/                         ✅ (images de test, masques prédits, masques de vérité terrain)
 ├── pyproject.toml              # Configuration Poetry
 ├── poetry.lock                 # Verrouillage des dépendances
 └── README.md
@@ -81,6 +82,8 @@ poetry shell
 ```bash
 poetry run jupyter lab
 ```
+
+Ouvrir le notebook `huggingface_api_cloth_seg.ipynb` pour commencer les tests.
 
 ### Configuration de l'API Hugging Face
 
@@ -159,8 +162,7 @@ Voir `CONTRIBUTING.md` pour plus de détails.
 
 ## 👥 Équipe
 
--   **Sophia Le Guennec** - Directrice IA, ModeTrends
--   **Développeur IA** - Implémentation de la segmentation vestimentaire
+-   **Développeur IA** - Me 🧑🏼‍🎓
 
 ## 📄 Licence
 
