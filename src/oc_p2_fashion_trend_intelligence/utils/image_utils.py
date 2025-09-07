@@ -281,6 +281,8 @@ def eval_segmentation_simple(path_true: str, path_pred: str, class_mapping, pale
         path_pred (str): chemin vers le masque prédit
         class_mapping (dict): {nom_classe: id_classe}
         palette (dict): {id_classe: [R, G, B]}
+    Returns:
+        dict: Dictionnaire avec accuracy, mIoU et Dice moyens
     """
     # Lecture des masques et conversion en float
     y_true = np.array(Image.open(path_true)).astype(float)
@@ -388,3 +390,5 @@ def eval_segmentation_simple(path_true: str, path_pred: str, class_mapping, pale
     )
     plt.tight_layout()
     plt.show()
+
+    return {"accuracy": accuracy, "mIoU": mIoU, "mean_dice": mean_dice}
